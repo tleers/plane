@@ -2,6 +2,9 @@ name: Publish v1.3.1 Pages API backend
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - shade/v1.3.1-pages-api-pr-9528
 
 permissions:
   contents: read
