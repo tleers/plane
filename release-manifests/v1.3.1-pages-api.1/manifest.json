@@ -12,7 +12,7 @@
   "image": {
     "tag": "tleers/plane-backend:v1.3.1-pages-api.1",
     "platform": "linux/arm64",
-    "local_image_id": "sha256:ddad362850c1c6f6dcb1e2777485ed830b113e33fbed1051b7f26235d360bab1",
+    "local_image_id": "sha256:5590a8193600a182877af31b97c8d81a2a7903da0b33fccce382a16a961cda2b",
     "dockerfile": "apps/api/Dockerfile.api",
     "build_context": "apps/api"
   },
