@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "release": "v1.3.1-pages-api.1",
+  "component": "plane-backend",
+  "upstream": {
+    "repository": "https://github.com/makeplane/plane",
+    "base_release": "v1.3.1",
+    "base_commit": "d0a4adc55bb1fa5b8c221c0c680b992d2677e9c5",
+    "patch": "https://github.com/makeplane/plane/pull/9528",
+    "source_commit": "f99a26d124249bf7d928aebcec80ac9f176f4df1"
+  },
+  "image": {
+    "tag": "tleers/plane-backend:v1.3.1-pages-api.1",
+    "platform": "linux/arm64",
+    "local_image_id": "sha256:ddad362850c1c6f6dcb1e2777485ed830b113e33fbed1051b7f26235d360bab1",
+    "dockerfile": "apps/api/Dockerfile.api",
+    "build_context": "apps/api"
+  },
+  "validation": {
+    "contract_test": "python -m pytest plane/tests/contract/api/test_pages.py -q",
+    "contract_result": "22 passed",
+    "production_image_compile_check": "python -m compileall -q plane/api plane/db"
+  },
+  "delivery": {
+    "default": "local-transfer",
+    "archive_name": "plane-backend-v1.3.1-pages-api.1-linux-arm64.tar.zst",
+    "archive_sha256": "69ecbdc3cba9f73f5805497dbc38372b8d214a23281afef2fce45704b137816b",
+    "archive_bytes": 110446211,
+    "exported_at": "2026-08-11T18:45:55Z",
+    "host_load_command": "zstd -d -c <archive> | docker load",
+    "pre_recreate_check": "docker image inspect tleers/plane-backend:v1.3.1-pages-api.1"
+  },
+  "rollback": {
+    "image": "makeplane/plane-backend:v1.3.1",
+    "known_image_digest": "sha256:2cdcb5f778c6ccacebce0e5a751d39fac4a549a44e049a5b110a7623cfdad139"
+  }
+}
