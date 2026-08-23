@@ -1,0 +1,38 @@
+{
+  "release": "v1.4.1-pages-api.1",
+  "status": "candidate",
+  "upstream": {
+    "repository": "https://github.com/makeplane/plane",
+    "tag": "v1.4.1",
+    "commit": "5662b761062b0b2f9d42a6578b55481b5b069792"
+  },
+  "downstream_patch": {
+    "pull_request": "https://github.com/makeplane/plane/pull/9528",
+    "state_at_build": "open and unmerged",
+    "commits": [
+      "46ebdb460110e33bc319c400f0811bd131dd8d0b",
+      "54245aaec04a41548e6dbe9f0636ac10d3bd0e8d",
+      "67ae632ed2e330af2e1830cf1ad5571d3ccd847e",
+      "7cedb80b5863ded1a2f65d0dd2698e5e1e618554",
+      "331ddaaf6dd6392164803834ea9f9cb02b9f7bc7"
+    ],
+    "purpose": "Expose authenticated project Pages REST API endpoints."
+  },
+  "source_commit": "a5239cdb0ac43658372a98558c58f337873a3bdc",
+  "image": {
+    "tag": "tleers/plane-backend:v1.4.1-pages-api.1",
+    "platform": "linux/arm64",
+    "local_image_id": "sha256:b021061720649ea1ba22d6b263e40e00ed049b6f12c939a40d3997aea942291d",
+    "archive": "plane-backend-v1.4.1-pages-api.1-linux-arm64.tar.zst",
+    "archive_sha256": "3d865a7b1102fd5c0e0fb30c57f6ff434db18db2d0cd632f822e45fdeebf01e3"
+  },
+  "verification": {
+    "pages_contract_test": "passed: docker compose -f docker-compose-test.yml run --rm --build api-tests pytest plane/tests/contract/api/test_pages.py -vv",
+    "runtime_probe": "passed: image reports Django 5.2.15",
+    "production_migration": "not started"
+  },
+  "rollback": {
+    "image": "tleers/plane-backend:v1.3.1-pages-api.1",
+    "procedure": "Restore the prior Compose override and recreate api, worker, and beat-worker with --env-file plane.env."
+  }
+}
