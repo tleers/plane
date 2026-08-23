@@ -1,6 +1,6 @@
 {
   "release": "v1.4.1-pages-api.1",
-  "status": "candidate",
+  "status": "promoted",
   "upstream": {
     "repository": "https://github.com/makeplane/plane",
     "tag": "v1.4.1",
@@ -29,7 +29,7 @@
   "verification": {
     "pages_contract_test": "passed: docker compose -f docker-compose-test.yml run --rm --build api-tests pytest plane/tests/contract/api/test_pages.py -vv",
     "runtime_probe": "passed: image reports Django 5.2.15",
-    "production_migration": "not started"
+    "production_migration": "passed: encrypted current recovery set mechanically verified; isolated restored production schema migrated successfully; production migrator exited 0; public root, instance API, authenticated project API, authenticated Pages API, and sibling routes accepted"
   },
   "rollback": {
     "image": "tleers/plane-backend:v1.3.1-pages-api.1",
